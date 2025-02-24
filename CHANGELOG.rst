@@ -7,6 +7,7 @@ Pending Release
 
 * feat: Added prefix to single robot control
 * fix: hand inertials fixed
+* feature: add srdfs for arms and hand
 
 0.4.0 (2024-12-11)
 ------------------
