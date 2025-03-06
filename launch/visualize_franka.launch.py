@@ -85,7 +85,7 @@ def generate_launch_description():
             DeclareLaunchArgument(
                 arm_id_parameter_name,
                 description="ID of the type of arm used. Supporter values: "
-                "fer, fr3, fp3",
+                "fer, fr3, fp3, fr3v2",
             ),
             robot_state_publisher_spawner_opaque_function,
             Node(
