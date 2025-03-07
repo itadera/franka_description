@@ -2,7 +2,7 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Pending Release
+0.5.0 (2025-03-07)
 ---------------
 
 * feat: Added prefix to single robot control
