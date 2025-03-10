@@ -46,7 +46,7 @@
   <xacro:arg name="gazebo_effort" default="false" />
   
   <!-- For a multi arm setup, we need a threaded robot running async-->
-  <xacro:arg name="multi_arm" default="true" />
+  <xacro:arg name="multi_arm" default="false" />
 
   <link name="base">
   </link>
@@ -61,7 +61,6 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:cover>
 
-  <!-- The multi robot setup configures 'multi_arm' by default to true s.t. it uses the async threading approach for the hardware interface -->
   <xacro:property name="number_of_robots" value = "2"/>
   <xacro:property name="arm_prefixes_list" value="${['left','right']}" /> 
   <xacro:macro name="loop" params="i">
