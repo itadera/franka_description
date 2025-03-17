@@ -11,7 +11,7 @@
     This argument is ignored.
   -->
   <!-- Define arguments -->
-  <xacro:arg name="arm_ids" default="['fr3','fr3']" />
+  <xacro:arg name="arm_ids" default="['fr3v2','fr3v2']" />
   <xacro:property name="arm_ids_list" value="${$(arg arm_ids)}" />
   
   <!-- Don't print a prefix for joints, visuals, and links? -->
@@ -44,9 +44,6 @@
 
   <!-- Should the robot be spawned in Gazebo with effort interfaces?" -->
   <xacro:arg name="gazebo_effort" default="false" />
-  
-  <!-- For a multi arm setup, we need a threaded robot running async-->
-  <xacro:arg name="multi_arm" default="false" />
 
   <link name="base">
   </link>
@@ -101,8 +98,7 @@
                           gazebo_effort="$(arg gazebo_effort)"
                           no_prefix="$(arg no_prefix)"
                           arm_prefix= "${arm_prefixes_list[i]}"
-                          connected_to="${arm_prefixes_list[i]}_base"
-                          multi_arm="$(arg multi_arm)">
+                          connected_to="${arm_prefixes_list[i]}_base">
       </xacro:franka_robot>
       <xacro:loop i="${i+1}"/>
     </xacro:unless>

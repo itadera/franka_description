@@ -39,7 +39,12 @@ def robot_state_publisher_spawner(context: LaunchContext, arm_id, arm_prefix, lo
         robot_description = xacro.process_file(franka_xacro_filepath).toprettyxml(indent="  ")
     else:
         robot_description = xacro.process_file(
-            franka_xacro_filepath, mappings={"hand": load_gripper_str, "ee_id": ee_id_str, "arm_prefix": arm_prefix_str}
+            franka_xacro_filepath,
+            mappings={
+                "hand": load_gripper_str,
+                "ee_id": ee_id_str,
+                "arm_prefix": arm_prefix_str
+            }
         ).toprettyxml(indent="  ")
 
     return [
@@ -76,7 +81,7 @@ def generate_launch_description():
         "visualize_franka_duo.rviz",
     )
 
-    robot_state_publisher_spawner_opaque_function=[]
+    robot_state_publisher_spawner_opaque_function = []
     fr3_duo_components = ["fixed_structure", "arm_left", "arm_right"]
     for component in fr3_duo_components:
         if component == "fixed_structure":
@@ -86,12 +91,12 @@ def generate_launch_description():
             ))
         else:
             print("Spawning arm")
-            arm_id=component.split("_")[0]
-            arm_prefix=component.split("_")[1]
+            arm_id = component.split("_")[0]
+            arm_prefix = component.split("_")[1]
             robot_state_publisher_spawner_opaque_function.append(OpaqueFunction(
-                function=robot_state_publisher_spawner, args=[arm_id, arm_prefix, load_gripper, ee_id]
+                function=robot_state_publisher_spawner,
+                args=[arm_id, arm_prefix, load_gripper, ee_id]
             ))
-    print(robot_state_publisher_spawner_opaque_function)
 
     return LaunchDescription(
         [
@@ -113,7 +118,6 @@ def generate_launch_description():
                 "fer, fr3, fp3, fr3v2, fr3_duo",
             ),
             *robot_state_publisher_spawner_opaque_function,
-        
             Node(
                 package="rviz2",
                 executable="rviz2",

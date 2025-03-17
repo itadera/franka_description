@@ -9,8 +9,7 @@
              gazebo:=^|false
              hand:=^|false
              gazebo_effort:=^|false
-             arm_prefix:=''
-             multi_arm:=false">
+             arm_prefix:=''">
              
     <xacro:property name="arm_prefix_modified" value="${'' if arm_prefix == '' else arm_prefix + '_'}" />
     <ros2_control name="${arm_prefix_modified}FrankaHardwareInterface" type="system">
@@ -27,13 +26,8 @@
             <plugin>franka_ign_ros2_control/IgnitionSystem</plugin>
           </xacro:if>
 
-          <xacro:if value="${use_fake_hardware == 0 and gazebo == 0 and multi_arm == 0}">
+          <xacro:if value="${use_fake_hardware == 0 and gazebo == 0}">
             <plugin>franka_hardware/FrankaHardwareInterface</plugin>
-            <param name="robot_ip">${robot_ip}</param>
-            <param name="arm_prefix">${arm_prefix}</param>
-          </xacro:if>
-          <xacro:if value="${use_fake_hardware == 0 and gazebo == 0 and multi_arm == 1}">
-            <plugin>franka_hardware/MultiFrankaHardwareInterface</plugin>
             <param name="robot_ip">${robot_ip}</param>
             <param name="arm_prefix">${arm_prefix}</param>
           </xacro:if>
@@ -46,10 +40,8 @@
             https://github.com/ros-controls/gz_ros2_control/issues/343
 
             Command Interfaces -->
-          <xacro:if value="${multi_arm == 0}">
             <command_interface name="position"/>
             <command_interface name="velocity"/>
-          </xacro:if>
           <xacro:if value="${gazebo == 0 or gazebo_effort == 1}">
             <command_interface name="effort"/>
           </xacro:if>

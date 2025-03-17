@@ -2,14 +2,16 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.1 (2025-03-19)
+---------------
+* feature: fr3 duo added to franka description
+
 0.5.0 (2025-03-07)
 ---------------
-
 * feature: Added prefix to single robot control
 * fix: hand inertials fixed
 * feature: add srdfs for arms and hand
 * feature: add fr3v2 robot
-* feature: fr3 duo added to franka description
 
 0.4.0 (2024-12-11)
 ------------------

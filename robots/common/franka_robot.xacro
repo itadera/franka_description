@@ -20,8 +20,8 @@
                       gazebo_effort:=false
                       no_prefix:='false'
                       arm_prefix:=''
-                      connected_to:='base'
-                      multi_arm:=false">
+                      connected_to:='base'">
+                      
     <xacro:include filename="$(find franka_description)/robots/common/utils.xacro" />
 
     <xacro:include filename="$(find franka_description)/robots/common/franka_arm.xacro" />
@@ -159,7 +159,6 @@
           hand="$(arg hand)"
           gazebo_effort="$(arg gazebo_effort)"
           arm_prefix="${arm_prefix}"
-          multi_arm="$(arg multi_arm)"
       />
     </xacro:if>
 
