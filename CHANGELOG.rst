@@ -5,6 +5,7 @@ Changelog for package franka_description
 0.5.1 (2025-03-19)
 ---------------
 * feature: fr3 duo added to franka description
+* feature: Added additional command interfaces for FX3 to the URDF
 
 0.5.0 (2025-03-07)
 ---------------
