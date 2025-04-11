@@ -6,6 +6,7 @@ Changelog for package franka_description
 ---------------
 * feature: fr3 duo added to franka description
 * feature: Added additional command interfaces for FX3 to the URDF
+* feature: identify fr3v2 inertials
 
 0.5.0 (2025-03-07)
 ---------------
