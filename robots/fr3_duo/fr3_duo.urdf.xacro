@@ -65,6 +65,7 @@
 
       <xacro:property name="mount_to_base" value="${xacro.load_yaml('$(arg mount_kinematics)')}"/>
       <xacro:property name="robot_prefix" value="${arm_prefixes_list[i]}"/>
+      <xacro:property name="modified_prefix" value="${robot_prefix + '_' if robot_prefix else ''}"/>
       <joint name="${arm_prefixes_list[i]}_base_joint" type="fixed">
         <parent link="mount_link"/>
         <child link="${arm_prefixes_list[i]}_base"/>
@@ -76,7 +77,7 @@
         </xacro:if>
         <origin rpy="${mount_corner.kinematic.roll} ${mount_corner.kinematic.pitch} ${mount_corner.kinematic.yaw}" xyz="${mount_corner.kinematic.x} ${mount_corner.kinematic.y} ${mount_corner.kinematic.z}"/>
       </joint>
-        
+
       <xacro:property name="arm_id_i" value="${arm_ids_list[i]}"/>
       <xacro:arg name="inertials_path" default="$(find franka_description)/robots/${arm_id_i}/inertials.yaml"/>
       <xacro:arg name="kinematics_path" default="$(find franka_description)/robots/${arm_id_i}/kinematics.yaml"/>
@@ -97,7 +98,7 @@
                           fake_sensor_commands="$(arg fake_sensor_commands)"
                           gazebo_effort="$(arg gazebo_effort)"
                           no_prefix="$(arg no_prefix)"
-                          arm_prefix= "${arm_prefixes_list[i]}"
+                          arm_prefix= "${modified_prefix}"
                           connected_to="${arm_prefixes_list[i]}_base">
       </xacro:franka_robot>
       <xacro:loop i="${i+1}"/>

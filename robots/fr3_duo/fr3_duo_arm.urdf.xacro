@@ -45,6 +45,10 @@
   <!-- Should the robot be spawned in Gazebo with effort interfaces?" -->
   <xacro:arg name="gazebo_effort" default="false" />
 
+  <!-- Append an underscore to the user-provided prefix, if non-empty. -->
+  <xacro:property name="prefix" value="$(arg arm_prefix)"/>
+  <xacro:property name="modified_prefix" value="${prefix + '_' if prefix else ''}"/>
+
   <link name="base">
   </link>
 
@@ -84,7 +88,7 @@
                       fake_sensor_commands="$(arg fake_sensor_commands)"
                       gazebo_effort="$(arg gazebo_effort)"
                       no_prefix="$(arg no_prefix)"
-                      arm_prefix= "${arm_prefix_i}"
+                      arm_prefix= "${modified_prefix}"
                       connected_to="${arm_prefix_i}_base">
       </xacro:franka_robot>
 </robot>

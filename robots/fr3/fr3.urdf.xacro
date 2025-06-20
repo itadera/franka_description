@@ -65,7 +65,7 @@
                       fake_sensor_commands="$(arg fake_sensor_commands)"
                       gazebo_effort="$(arg gazebo_effort)"
                       no_prefix="$(arg no_prefix)"
-                      arm_prefix="$(arg arm_prefix)"
+                      arm_prefix="${modified_prefix}"
                       connected_to= "base">
   </xacro:franka_robot>
 
