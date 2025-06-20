@@ -7,6 +7,8 @@ Changelog for package franka_description
 * feature: fr3 duo added to franka description
 * feature: Added additional command interfaces for FX3 to the URDF
 * feature: identify fr3v2 inertials
+* feature: add the version tag to ros2_control
+* fix: change paramater location in xacro/macro from arg to property
 
 0.5.0 (2025-03-07)
 ---------------
