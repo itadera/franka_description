@@ -2,7 +2,7 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.6.0 (2025-06-26)
+1.0.0 (2025-06-26)
 ---------------
 * breaking change: cobot pump parameters are not longer selected by default in the robot xacro
 * fix: urdf xacros include end-effector parameters
