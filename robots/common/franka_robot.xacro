@@ -16,6 +16,7 @@
                       safety_distance:='0.03'
                       hand:='true'
                       ee_id:=none
+                      special_connection:=''
                       gazebo:='false'
                       with_sc:='false'
                       ros2_control:=false
@@ -25,6 +26,7 @@
                       gazebo_effort:=false
                       no_prefix:='false'
                       arm_prefix:=''
+                      description_pkg:='franka_description'
                       connected_to:='base'">
                       
     <xacro:include filename="$(find franka_description)/robots/common/utils.xacro" />
@@ -50,7 +52,6 @@
     <xacro:if value="${hand and ee_id == 'franka_hand'}">
       <xacro:include filename="$(find franka_description)/end_effectors/common/franka_hand.xacro"/>
       <xacro:include filename="$(find franka_description)/end_effectors/common/utils.xacro" />
-      <xacro:include filename="$(find franka_description)/end_effectors/${ee_id}/${ee_id}_arguments.xacro" />
       <xacro:if value="${arm_id == 'fp3'}">
         <xacro:property name="ee_color" value="black" />
       </xacro:if>
@@ -71,7 +72,7 @@
         tcp_rpy="${tcp_rpy}"
         safety_distance="${safety_distance}"
         gazebo="${gazebo}"
-        description_pkg="$(arg description_pkg)"
+        description_pkg="${description_pkg}"
         with_sc="${with_sc}"
       />
     </xacro:if>
@@ -79,7 +80,6 @@
     <xacro:if value="${hand and ee_id != 'none' and ee_id != 'franka_hand'}">
       <xacro:include filename="$(find franka_description)/end_effectors/common/ee_with_one_link.xacro"/>
       <xacro:include filename="$(find franka_description)/end_effectors/common/utils.xacro" />
-      <xacro:include filename="$(find franka_description)/end_effectors/' + ee_id + '/' + ee_id + '_arguments.xacro" />
       <xacro:property name="special_connection" value="${special_connection}" />
       <xacro:property name="connection" value="${special_connection if special_connection == '' else arm_id + '_link8'}" />
       <xacro:ee_with_one_link
@@ -94,7 +94,7 @@
         tcp_rpy="${tcp_rpy}"
         safety_distance="${safety_distance}"
         gazebo="${gazebo}"
-        description_pkg="$(arg description_pkg)"
+        description_pkg="${description_pkg}"
         with_sc="${with_sc}"
       />
     </xacro:if>
