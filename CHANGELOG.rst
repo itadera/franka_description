@@ -2,7 +2,7 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.1 (UNRELEASED)
+1.0.1 (2025-07-09)
 ---------------
 * fix: cover and mount replaced by new designs
 
