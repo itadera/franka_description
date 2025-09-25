@@ -2,6 +2,11 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.2 (2025-08-01)
+---------------
+* fix: gazebo can be used with prefixes
+* fix: ee_with_one_link takes the correct arguments to allow visualization
+
 1.0.1 (2025-07-09)
 ---------------
 * fix: cover and mount replaced by new designs
