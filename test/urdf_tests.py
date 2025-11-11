@@ -14,16 +14,16 @@
 
 from os import path
 
-import xacro
 from ament_index_python.packages import get_package_share_directory
+import xacro
 
-arm_id_ = "fer"
+arm_id_ = 'fer'
 
 xacro_file_name = path.join(
-    get_package_share_directory("franka_description"),
-    "robots",
+    get_package_share_directory('franka_description'),
+    'robots',
     arm_id_,
-    arm_id_ + ".urdf.xacro",
+    arm_id_ + '.urdf.xacro',
 )
 
 
@@ -32,49 +32,49 @@ def test_load():
     urdf = xacro.process_file(
         xacro_file_name,
         mappings={
-            "arm_id": "fer",
-            "ee_id": "none",
+            'arm_id': 'fer',
+            'ee_id': 'none',
         },
     ).toxml()
-    assert urdf.find("fer_finger_joint1") == -1
+    assert urdf.find('fer_finger_joint1') == -1
 
 
 def test_load_with_gripper():
     """Test of hand parameter equal to a value."""
     urdf = xacro.process_file(
-        xacro_file_name, mappings={"arm_id": "fer", "ee_id": "franka_hand"}
+        xacro_file_name, mappings={'arm_id': 'fer', 'ee_id': 'franka_hand'}
     ).toxml()
-    assert urdf.find("fer_finger_joint") != -1
+    assert urdf.find('fer_finger_joint') != -1
 
 
 def test_check_interfaces():
     """Test of the parameters for ros2_control hardware interface."""
     urdf = xacro.process_file(
-        xacro_file_name, mappings={"ros2_control": "true"}
+        xacro_file_name, mappings={'ros2_control': 'true'}
     ).toxml()
-    assert urdf.find("state_interface") != -1
-    assert urdf.find("command_interface") != -1
-    assert urdf.find("position") != -1
-    assert urdf.find("velocity") != -1
-    assert urdf.find("effort") != -1
+    assert urdf.find('state_interface') != -1
+    assert urdf.find('command_interface') != -1
+    assert urdf.find('position') != -1
+    assert urdf.find('velocity') != -1
+    assert urdf.find('effort') != -1
 
 
 def test_load_with_fake_hardware():
     """Test of use_fake_hardware parameter for ros2_control hardware interface."""
     urdf = xacro.process_file(
-        xacro_file_name, mappings={"ros2_control": "true", "use_fake_hardware": "true"}
+        xacro_file_name, mappings={'ros2_control': 'true', 'use_fake_hardware': 'true'}
     ).toxml()
-    assert urdf.find("fake_components/GenericSystem") != -1
+    assert urdf.find('mock_components/GenericSystem') != -1
 
 
 def test_load_with_robot_ip():
     """Test of robot_ip parameter for ros2_control hardware interface."""
     urdf = xacro.process_file(
         xacro_file_name,
-        mappings={"ros2_control": "true", "robot_ip": "franka_ip_address"},
+        mappings={'ros2_control': 'true', 'robot_ip': 'franka_ip_address'},
     ).toxml()
-    assert urdf.find("franka_ip_address") != -1
+    assert urdf.find('franka_ip_address') != -1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     pass

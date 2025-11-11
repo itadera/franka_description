@@ -2,6 +2,26 @@
 Changelog for package franka_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.0
+----------
+* feat: updated kinematics, meshes, inertials, materials for fr3_duo mount and cover
+
+2.1.0 (2025-10-24)
+----------
+* fix: add fp3 robot joint limits
+* fix: group definition in SRDF file checking for right TCP
+* feat: add fr3v2.1 robot variant
+
+2.0.0 (2025-08-26)
+------------------
+* feat: migrate to ROS 2 Jazzy
+
+1.1.0
+----------
+* feat: added accelerometer frames to urdfs
+* feat: update joint limits for fr3v2 and fr3
+* feat: add position based velocity limits tags to urdfs for fr3v2 and fr3
+
 1.0.2 (2025-08-01)
 ---------------
 * fix: gazebo can be used with prefixes
